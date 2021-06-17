@@ -77,6 +77,14 @@ public class Calendar {
             this.date = date;
         }
 
+        public String getDescription() {
+            return description;
+        }
+
+        public void setDescription(String description) {
+            this.description = description;
+        }
+
         @Override
         public boolean equals(Object o) {
             if (this == o) return true;
