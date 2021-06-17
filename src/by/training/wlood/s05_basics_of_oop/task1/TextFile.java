@@ -1,5 +1,7 @@
 package by.training.wlood.s05_basics_of_oop.task1;
 
+import java.util.Objects;
+
 public class TextFile extends File{
     private String content;
 
@@ -20,29 +22,16 @@ public class TextFile extends File{
         this.content = content;
     }
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + ((content == null) ? 0 : content.hashCode());
-		return result;
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		if (!super.equals(o)) return false;
+		TextFile textFile = (TextFile) o;
+		return Objects.equals(content, textFile.content);
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (!super.equals(obj))
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		TextFile other = (TextFile) obj;
-		if (content == null) {
-			if (other.content != null)
-				return false;
-		} else if (!content.equals(other.content))
-			return false;
-		return true;
+	public int hashCode() {
+		return Objects.hash(super.hashCode(), content);
 	}
 
 	@Override
