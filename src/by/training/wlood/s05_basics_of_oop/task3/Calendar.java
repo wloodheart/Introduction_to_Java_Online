@@ -1,19 +1,72 @@
 package by.training.wlood.s05_basics_of_oop.task3;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 public class Calendar {
 
-    private class dayOff {
+    private List<DayOff> dayOffList;
+
+    public Calendar() {
+        dayOffList = new ArrayList<>();
+    }
+
+    public Calendar(List<DayOff> dayOffList) {
+        this.dayOffList = dayOffList;
+    }
+
+    public List<DayOff> getDayOffList() {
+        return dayOffList;
+    }
+
+    public void setDayOffList(List<DayOff> dayOffList) {
+        this.dayOffList = dayOffList;
+    }
+
+    public void addDayOff(Date date) {
+        dayOffList.add(new DayOff(date));
+    }
+
+    public void addDayOff(Date date, String description) {
+        dayOffList.add(new DayOff(date, description));
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Calendar calendar = (Calendar) o;
+        return Objects.equals(dayOffList, calendar.dayOffList);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(dayOffList);
+    }
+
+    @Override
+    public String toString() {
+        return "Calendar{" +
+                "dayOffList=" + dayOffList +
+                '}';
+    }
+
+    private class DayOff {
         private Date date;
         private String description;
 
-        public dayOff() {
+        public DayOff() {
         }
 
-        public dayOff(Date date) {
+        public DayOff(Date date) {
             this.date = date;
+        }
+
+        public DayOff(Date date, String description) {
+            this.date = date;
+            this.description = description;
         }
 
         public Date getDate() {
@@ -28,7 +81,7 @@ public class Calendar {
         public boolean equals(Object o) {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
-            dayOff dayOff = (dayOff) o;
+            DayOff dayOff = (DayOff) o;
             return Objects.equals(date, dayOff.date);
         }
 
