@@ -21,29 +21,53 @@ public class UserInterface {
         this.viewCave = viewCave;
     }
 
-    public void startOptionsByUserChoice(){
-        showMenu();
-        switch (enterFromConsole()){
-            case 1 : viewCave.showTreasureList();
-            case 2 : viewCave.showDearestTreasure();
-            case 3 : viewCave.showTreasureListByPrice(enterFromConsole());
+    public void startOptionsByUserChoice() {
+        switch (enterFromConsole()) {
+            case 0 -> System.out.println("Exit");
+            case 1 -> {
+                viewCave.showTreasureList();
+                askReturnToMenu();
+            }
+            case 2 -> {
+                viewCave.showDearestTreasure();
+                askReturnToMenu();
+            }
+            case 3 -> {
+                System.out.println("Enter price: ");
+                viewCave.showTreasureListByPrice(enterFromConsole());
+                askReturnToMenu();
+            }
+            default -> startOptionsByUserChoice();
         }
+
     }
 
-    public void showMenu(){
+    public void showMenu() {
         System.out.println("""
+                                
                 Select an option from menu:\s
 
                 1. Show all treasures in cave;\s
                 2. Show the dearest treasure;\s
-                3. Show treasures by price.\s""");
+                3. Show treasures by price.\s
+                                
+                0. Exit.""");
     }
 
-    public int enterFromConsole(){
+    public void askReturnToMenu() {
+        System.out.println("\nEnter 0 for return to menu");
+        while (enterFromConsole() != 0) {
+            enterFromConsole();
+        }
+        showMenu();
+        startOptionsByUserChoice();
+    }
+
+    public int enterFromConsole() {
         System.out.print(">> ");
 
-        while (!scanner.hasNextInt()){
-            System.out.println(">> ");
+        while (!scanner.hasNextInt()) {
+            System.out.print(">> ");
             scanner.next();
         }
         return scanner.nextInt();

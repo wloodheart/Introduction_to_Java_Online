@@ -1,6 +1,8 @@
 package by.training.wlood.s05_basics_of_oop.task4;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /*
 Создать консольное приложение, удовлетворяющее следующим требованиям:
@@ -21,14 +23,23 @@ public class Main {
         ViewCave view = new ViewCave(new Cave(initTreasureList()));
         UserInterface userInterface = new UserInterface(view);
 
-        while (true)
-            userInterface.startOptionsByUserChoice();
+        userInterface.showMenu();
+        userInterface.startOptionsByUserChoice();
     }
 
-    static List<Treasure> initTreasureList(){
-        return List.of(new Treasure("Iron", 105),
-                new Treasure("Copper", 80),
-                new Treasure("Gold", 120),
-                new Treasure("Diamond", 150));
+    static List<Treasure> initTreasureList() {
+        List<Treasure> treasureList = new ArrayList<>(100);
+        Random random = new Random();
+
+        for (int i = 0; i < 100; i++) {
+            StringBuilder name = new StringBuilder();
+            name.append((char) (random.nextInt(25) + 65));
+            for (int j = 0; j < random.nextInt(3) + 3; j++) {
+                name.append((char) (random.nextInt(25) + 97));
+            }
+            treasureList.add(new Treasure(name.toString(), random.nextInt(100)));
+        }
+
+        return treasureList;
     }
 }
