@@ -18,9 +18,11 @@ import java.util.List;
  */
 public class Main {
     public static void main(String[] args) {
-        View view = new View(new Cave(initTreasureList()));
+        ViewCave view = new ViewCave(new Cave(initTreasureList()));
 
         view.showTreasureList();
+        view.showDearestTreasure();
+        view.showTreasureListByPrice(80);
     }
 
     static List<Treasure> initTreasureList(){

@@ -23,8 +23,28 @@ public class Cave {
         this.treasureList = treasureList;
     }
 
-    public void addTreasure(Treasure treasure){
+    public void addTreasure(Treasure treasure) {
         treasureList.add(treasure);
+    }
+
+    public Treasure getDearestTreasure() {
+        Treasure dearestTreasure = treasureList.get(0);
+
+        for (Treasure treasure : treasureList) {
+            if (dearestTreasure.getPrice() < treasure.getPrice())
+                dearestTreasure = treasure;
+        }
+        return dearestTreasure;
+    }
+
+    public List<Treasure> getTreasureListByPrice(int inputPrice) {
+        List<Treasure> outputTreasureList = new ArrayList<>();
+
+        for (Treasure treasure : treasureList) {
+            if (treasure.getPrice() == inputPrice)
+                outputTreasureList.add(treasure);
+        }
+        return outputTreasureList;
     }
 
     @Override
