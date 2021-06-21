@@ -19,10 +19,10 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         ViewCave view = new ViewCave(new Cave(initTreasureList()));
+        UserInterface userInterface = new UserInterface(view);
 
-        view.showTreasureList();
-        view.showDearestTreasure();
-        view.showTreasureListByPrice(80);
+        while (true)
+            userInterface.startOptionsByUserChoice();
     }
 
     static List<Treasure> initTreasureList(){
