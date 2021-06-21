@@ -1,4 +1,7 @@
-package by.training.wlood.s05_basics_of_oop.task4;
+package by.training.wlood.s05_basics_of_oop.task4.view;
+
+import by.training.wlood.s05_basics_of_oop.task4.bean.Cave;
+import by.training.wlood.s05_basics_of_oop.task4.bean.Treasure;
 
 import java.util.List;
 
@@ -20,18 +23,20 @@ public class ViewCave {
         this.cave = cave;
     }
 
-    public void showTreasureList(){
-        for (Treasure treasure : cave.getTreasureList()){
+    public void showTreasureList() {
+        for (Treasure treasure : cave.getTreasureList()) {
             System.out.println(treasure.getName() + " : " + treasure.getPrice());
         }
     }
-    public void showDearestTreasure(){
+
+    public void showDearestTreasure() {
         System.out.println(cave.getDearestTreasure().getName() + " : " + cave.getDearestTreasure().getPrice());
     }
-    public void showTreasureListByPrice(int inputPrice){
+
+    public void showTreasureListByPrice(int inputPrice) {
         List<Treasure> treasureList = cave.getTreasureListByPrice(inputPrice);
 
-        for (Treasure treasure : treasureList){
+        for (Treasure treasure : treasureList) {
             System.out.println(treasure.getName() + " : " + treasure.getPrice());
         }
     }

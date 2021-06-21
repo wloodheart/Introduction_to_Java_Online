@@ -1,8 +1,10 @@
-package by.training.wlood.s05_basics_of_oop.task4;
+package by.training.wlood.s05_basics_of_oop.task4.bean;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Treasure {
+public class Treasure implements Serializable {
+
     private String name;
     private int price;
 

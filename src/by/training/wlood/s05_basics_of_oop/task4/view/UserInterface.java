@@ -1,4 +1,4 @@
-package by.training.wlood.s05_basics_of_oop.task4;
+package by.training.wlood.s05_basics_of_oop.task4.view;
 
 import java.util.Scanner;
 

@@ -1,4 +1,9 @@
-package by.training.wlood.s05_basics_of_oop.task4;
+package by.training.wlood.s05_basics_of_oop.task4.main;
+
+import by.training.wlood.s05_basics_of_oop.task4.bean.Cave;
+import by.training.wlood.s05_basics_of_oop.task4.bean.Treasure;
+import by.training.wlood.s05_basics_of_oop.task4.view.UserInterface;
+import by.training.wlood.s05_basics_of_oop.task4.view.ViewCave;
 
 import java.util.ArrayList;
 import java.util.List;
