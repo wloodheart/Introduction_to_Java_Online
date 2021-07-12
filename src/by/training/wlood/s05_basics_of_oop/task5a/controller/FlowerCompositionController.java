@@ -28,14 +28,16 @@ public class FlowerCompositionController {
         flowerComposition.getFlowerList().add(new Flower(name));
     }
 
-    public void setPackagingTypeByPackagingName(String name) {
+    public boolean setPackagingTypeByPackagingName(String name) {
+        boolean isCorrected = true;
         switch (name) {
             case "box" -> flowerComposition.getPackaging().setPackageType(PackagingType.BOX);
             case "envelope" -> flowerComposition.getPackaging().setPackageType(PackagingType.ENVELOPE);
             case "basket" -> flowerComposition.getPackaging().setPackageType(PackagingType.BASKET);
             case "ceramics" -> flowerComposition.getPackaging().setPackageType(PackagingType.CERAMICS);
-//            default ->
+            default -> isCorrected = false;
         }
+        return isCorrected;
     }
 
     @Override
