@@ -1,5 +1,8 @@
 package by.training.wlood.s05_basics_of_oop.task5a.main;
 
+import by.training.wlood.s05_basics_of_oop.task5a.controller.FlowerCompositionController;
+import by.training.wlood.s05_basics_of_oop.task5a.view.View;
+
 /*
 Создать консольное приложение, удовлетворяющее следующим требованиям:
 •   Корректно спроектируйте и реализуйте предметную область задачи.
@@ -15,6 +18,14 @@ package by.training.wlood.s05_basics_of_oop.task5a.main;
  */
 public class Main {
     public static void main(String[] args) {
+
+        FlowerCompositionController flowerCompositionController = new FlowerCompositionController();
+        View view = new View(flowerCompositionController);
+
+        flowerCompositionController.addFlowerByName("Rose", "Lily", "Tulip", "Orchid");
+        view.setPackagingTypeByPackagingName("box");
+
+        view.showFlowerComposition();
 
     }
 }

@@ -10,6 +10,7 @@ public class FlowerCompositionController {
     private FlowerComposition flowerComposition;
 
     public FlowerCompositionController() {
+        flowerComposition = new FlowerComposition();
     }
 
     public FlowerCompositionController(FlowerComposition flowerComposition) {
@@ -24,8 +25,10 @@ public class FlowerCompositionController {
         this.flowerComposition = flowerComposition;
     }
 
-    public void addFlowerByName(String name) {
-        flowerComposition.getFlowerList().add(new Flower(name));
+    public void addFlowerByName(String... flowersName) {
+
+        for (String name : flowersName)
+            flowerComposition.getFlowerList().add(new Flower(name));
     }
 
     public boolean setPackagingTypeByPackagingName(String name) {
