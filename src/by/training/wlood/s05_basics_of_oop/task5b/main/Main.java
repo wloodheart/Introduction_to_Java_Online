@@ -1,5 +1,7 @@
 package by.training.wlood.s05_basics_of_oop.task5b.main;
 
+import by.training.wlood.s05_basics_of_oop.task5b.controller.GiftController;
+
 /*
 Создать консольное приложение, удовлетворяющее следующим требованиям:
 • Корректно спроектируйте и реализуйте предметную область задачи.
@@ -14,6 +16,9 @@ package by.training.wlood.s05_basics_of_oop.task5b.main;
  */
 public class Main {
     public static void main(String[] args) {
+
+        GiftController giftController = GiftController.getInstance();
+        giftController.creteNewGift();
 
     }
 }

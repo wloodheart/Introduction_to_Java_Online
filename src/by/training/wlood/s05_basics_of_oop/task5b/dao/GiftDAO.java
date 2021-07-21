@@ -6,10 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GiftDAO {
-    private static final GiftDAO instance =new GiftDAO();
+    private static final GiftDAO instance = new GiftDAO();
     private final List<Gift> giftList = new ArrayList<>();
 
-    private GiftDAO(){}
+    private GiftDAO() {
+    }
 
     public static GiftDAO getInstance() {
         return instance;
@@ -18,6 +19,4 @@ public class GiftDAO {
     public List<Gift> getGiftList() {
         return giftList;
     }
-
-
 }
