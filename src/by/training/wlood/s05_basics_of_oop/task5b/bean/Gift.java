@@ -9,8 +9,6 @@ public class Gift {
     private Packaging packaging;
 
     public Gift() {
-        sweetList = new ArrayList<>();
-        packaging = new Packaging();
     }
 
     public Gift(List<Sweet> sweetList, Packaging packaging) {
