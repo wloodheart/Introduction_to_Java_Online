@@ -1,6 +1,7 @@
 package by.training.wlood.s05_basics_of_oop.task5b.main;
 
 import by.training.wlood.s05_basics_of_oop.task5b.controller.GiftController;
+import by.training.wlood.s05_basics_of_oop.task5b.view.GiftView;
 
 /*
 Создать консольное приложение, удовлетворяющее следующим требованиям:
@@ -16,9 +17,15 @@ import by.training.wlood.s05_basics_of_oop.task5b.controller.GiftController;
  */
 public class Main {
     public static void main(String[] args) {
-
         GiftController giftController = GiftController.getInstance();
+        GiftView giftView = GiftView.getInstance();
+
         giftController.creteNewGift();
+        giftController.selectPackagingByGiftId(0,"box");
+        giftController.addSweetByGiftId(0, "Chocolate", "Alenka");
+        giftController.addSweetByGiftId(0, "Cookie", "Slodych");
+
+        giftView.showGiftById(0);
 
     }
 }

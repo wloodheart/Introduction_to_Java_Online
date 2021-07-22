@@ -4,13 +4,13 @@ import by.training.wlood.s05_basics_of_oop.task5b.bean.Sweet;
 
 import java.util.Objects;
 
-public class Cookies implements Sweet {
+public class Cookie implements Sweet {
     private String name;
 
-    public Cookies() {
+    public Cookie() {
     }
 
-    public Cookies(String name) {
+    public Cookie(String name) {
         this.name = name;
     }
 
@@ -28,8 +28,8 @@ public class Cookies implements Sweet {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Cookies cookies = (Cookies) o;
-        return Objects.equals(name, cookies.name);
+        Cookie cookie = (Cookie) o;
+        return Objects.equals(name, cookie.name);
     }
 
     @Override
