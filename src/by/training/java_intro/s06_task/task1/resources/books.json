@@ -1,0 +1,13 @@
+[
+  {
+    "id": 1,
+    "bookType": "PAPER",
+    "title": "title",
+    "author": "autor",
+    "releaseYear": "200",
+    "description": ""
+  },
+  {
+    "id": 0
+  }
+]

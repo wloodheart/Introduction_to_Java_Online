@@ -1,13 +1,15 @@
 package by.training.java_intro.s06_task.task1.main;
 
 import by.training.java_intro.s06_task.task1.bean.Book;
-import by.training.java_intro.s06_task.task1.bean.PapierBook;
+import by.training.java_intro.s06_task.task1.bean.BookType;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 /*
 Задание 1: создать консольное приложение “Учет книг в домашней библиотеке”.
@@ -19,7 +21,7 @@ import java.io.PrintWriter;
     Администратор может модифицировать каталог.
     *При добавлении описания книги в каталог оповещение о ней рассылается на e-mail всем пользователям
     **При просмотре каталога желательно реализовать постраничный просмотр
-    ***Пользователь может предложить добавить книгу в библиотеку, переслав еёадминистратору на e-mail.
+    ***Пользователь может предложить добавить книгу в библиотеку, переслав её администратору на e-mail.
     Каталог книг хранится в текстовом файле.
     Данные аутентификации пользователей хранятся в текстовом файле. Пароль не хранится в открытом виде
  */
@@ -27,15 +29,16 @@ public class Main {
     public static void main(String[] args) throws FileNotFoundException {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-        Book book = new PapierBook("title", "autor", "200");
+        Book book = new Book(1, BookType.PAPER, "title", "author", "200", "");
 
-        System.out.println(gson.toJson(book));
+        List<Book> bookList = new ArrayList<>();
+        bookList.add(book);
+        bookList.add(new Book());
 
-        File file = new File("src/by/training/wlood/s06_task/task1/resources/users.json");
+        File file = new File("src/by/training/java_intro/s06_task/task1/resources/books.json");
         PrintWriter printWriter = new PrintWriter(file);
 
-        printWriter.print(gson.toJson(book));
-        printWriter.println(gson.toJson(book));
+        printWriter.print(gson.toJson(bookList));
 
         printWriter.close();
 
