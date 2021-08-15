@@ -1,4 +1,4 @@
-package by.training.wlood.s06_task.task1.bean;
+package by.training.java_intro.s06_task.task1.bean;
 
 public interface Book {
     String getTitle();
