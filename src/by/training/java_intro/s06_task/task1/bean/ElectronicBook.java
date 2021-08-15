@@ -1,21 +1,21 @@
-package by.training.wlood.s06_task.task1.bean;
+package by.training.java_intro.s06_task.task1.bean;
 
 import java.util.Objects;
 
-public class PapierBook implements Book {
+public class ElectronicBook implements Book{
     private final String title;
     private final String author;
     private final String releaseYear;
     private String description;
 
 
-    public PapierBook() {
+    public ElectronicBook() {
         title = null;
         author = null;
         releaseYear = null;
     }
 
-    public PapierBook(String title, String author, String releaseYear) {
+    public ElectronicBook(String title, String author, String releaseYear) {
         this.title = title;
         this.author = author;
         this.releaseYear = releaseYear;
@@ -50,7 +50,7 @@ public class PapierBook implements Book {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        PapierBook that = (PapierBook) o;
+        ElectronicBook that = (ElectronicBook) o;
         return Objects.equals(title, that.title) && Objects.equals(author, that.author) && Objects.equals(releaseYear, that.releaseYear) && Objects.equals(description, that.description);
     }
 
@@ -61,7 +61,7 @@ public class PapierBook implements Book {
 
     @Override
     public String toString() {
-        return "PapierBook{" +
+        return "ElectronicBook{" +
                 "title='" + title + '\'' +
                 ", author='" + author + '\'' +
                 ", releaseYear='" + releaseYear + '\'' +
