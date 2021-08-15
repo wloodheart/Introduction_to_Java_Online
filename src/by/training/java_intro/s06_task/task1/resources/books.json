@@ -2,12 +2,25 @@
   {
     "id": 1,
     "bookType": "PAPER",
-    "title": "title",
-    "author": "autor",
-    "releaseYear": "200",
+    "title": "Core Java",
+    "author": "Cay S. Horstmann",
+    "releaseYear": "2018",
     "description": ""
   },
   {
-    "id": 0
+    "id": 2,
+    "bookType": "PAPER",
+    "title": "Effective Java",
+    "author": "Joshua Bloch",
+    "releaseYear": "2017",
+    "description": ""
+  },
+  {
+    "id": 3,
+    "bookType": "PAPER",
+    "title": "Java: A Beginner's Guide",
+    "author": "Herbert Schildt",
+    "releaseYear": "2018",
+    "description": ""
   }
 ]
