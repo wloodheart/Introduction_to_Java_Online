@@ -3,21 +3,15 @@ package by.training.java_intro.s06_task.task1.bean;
 import java.util.Objects;
 
 public class Book {
-    private final long id;
-    private final BookType bookType;
-    private final String title;
-    private final String author;
-    private final String releaseYear;
+    private long id;
+    private BookType bookType;
+    private String title;
+    private String author;
+    private String releaseYear;
     private String description;
 
 
-    public Book() {
-        id = 0;
-        bookType = null;
-        title = null;
-        author = null;
-        releaseYear = null;
-    }
+    public Book() { }
 
     public Book(long id, BookType bookType, String title, String author, String releaseYear, String description) {
         this.id = id;
@@ -50,6 +44,26 @@ public class Book {
 
     public String getDescription() {
         return description;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setBookType(BookType bookType) {
+        this.bookType = bookType;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public void setReleaseYear(String releaseYear) {
+        this.releaseYear = releaseYear;
     }
 
     public void setDescription(String description) {

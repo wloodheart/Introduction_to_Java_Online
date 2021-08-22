@@ -8,5 +8,5 @@ public interface BookDAO {
 
     void deleteById(long idBook) throws DAOException;
 
-    void deleteByBook(Book book) throws DAOException;
+    void deleteBook(Book book) throws DAOException;
 }

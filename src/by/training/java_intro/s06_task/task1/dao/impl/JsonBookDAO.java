@@ -4,15 +4,17 @@ import by.training.java_intro.s06_task.task1.bean.Book;
 import by.training.java_intro.s06_task.task1.dao.BookDAO;
 import by.training.java_intro.s06_task.task1.dao.exeption.DAOException;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class JsonBookDAO implements BookDAO {
-    private List<Book> bookList;
+    private List<Book> bookList = null;
 
     public JsonBookDAO() {
+        bookList = new ArrayList<>();
         parse();
     }
 
@@ -22,7 +24,9 @@ public class JsonBookDAO implements BookDAO {
             throw new DAOException("Incorrect book");
         }
         try {
+            book.setId(bookList.size());
             bookList.add(book);
+            write();
         } catch (Exception e) {
             throw new DAOException();
         }
@@ -30,26 +34,21 @@ public class JsonBookDAO implements BookDAO {
 
     @Override
     public void deleteById(long id) throws DAOException {
-        if (id == 0) {
+        if (id < bookList.size()) {
             throw new DAOException("Incorrect id");
         }
-        try {
-            bookList.removeIf(book -> book.getId() == id);
-        } catch (Exception e) {
-            throw new DAOException();
-        }
+        deleteBook(bookList.get((int) (id-1)));
     }
 
     @Override
-    public void deleteByBook(Book book) throws DAOException {
+    public void deleteBook(Book book) throws DAOException {
         if (book == null) {
             throw new DAOException("Incorrect book");
         }
-        try {
-            bookList.remove(book);
-        } catch (Exception e) {
-            throw new DAOException();
+        if (bookList.remove(book)) {
+            throw new DAOException("The book has been not removed");
         }
+        write();
     }
 
     private void parse() {
@@ -57,10 +56,22 @@ public class JsonBookDAO implements BookDAO {
         FileReader fileReader = null;
         try {
             fileReader = new FileReader("src/by/training/java_intro/s06_task/task1/resources/books.json");
-        } catch (FileNotFoundException e) {
+            bookList.addAll(List.of(gson.fromJson(fileReader, Book[].class)));
+            fileReader.close();
+        } catch (IOException e) {
             e.printStackTrace();
         }
-        assert fileReader != null;
-        bookList = List.of(gson.fromJson(fileReader, Book[].class));
+    }
+
+    private void write() {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        PrintWriter printWriter = null;
+        try {
+            printWriter = new PrintWriter("src/by/training/java_intro/s06_task/task1/resources/books.json");
+            printWriter.write(gson.toJson(bookList));
+            printWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

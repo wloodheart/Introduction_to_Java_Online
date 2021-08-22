@@ -2,7 +2,10 @@ package by.training.java_intro.s06_task.task1.main;
 
 import by.training.java_intro.s06_task.task1.bean.Book;
 import by.training.java_intro.s06_task.task1.bean.BookType;
+import by.training.java_intro.s06_task.task1.controller.CommandProvider;
+import by.training.java_intro.s06_task.task1.controller.Controller;
 import by.training.java_intro.s06_task.task1.dao.BookDAO;
+import by.training.java_intro.s06_task.task1.dao.exeption.DAOException;
 import by.training.java_intro.s06_task.task1.dao.factory.DAOFactory;
 import by.training.java_intro.s06_task.task1.dao.impl.JsonBookDAO;
 import com.google.gson.Gson;
@@ -30,28 +33,7 @@ import java.util.List;
  */
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
-//        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-//
-//        Book book = new Book(1, BookType.PAPER, "title", "author", "200", "");
-//
-//        List<Book> bookList = new ArrayList<>();
-//        bookList.add(book);
-//        bookList.add(new Book());
-//
-//        File file = new File("src/by/training/java_intro/s06_task/task1/resources/books.json");
-//        PrintWriter printWriter = new PrintWriter(file);
-//
-//        printWriter.print(gson.toJson(bookList));
-//
-//        printWriter.close();
-
-        List<String> list = new ArrayList<>();
-        list.add("21");
-
-
-        System.out.println(list.remove("21"));
-        System.out.println(list.remove("212"));
-        System.out.println(list);
-
+        Controller controller = new Controller();
+        controller.executeTask("ADD_BOOK PAPER Head_First Bert_Bates 2005");
     }
 }
