@@ -3,17 +3,13 @@ package by.training.java_intro.s06_task.task1.bean;
 import java.util.Objects;
 
 public class User {
-    private final long id;
-    private final String login;
-    private final int passwordHash;
+    private long id;
+    private String login;
+    private int passwordHash;
     private String email;
     private Role role;
 
     public User() {
-        id = 0;
-        login = null;
-        passwordHash = 0;
-        role = null;
     }
 
     public User(long id, String login, int passwordHash, String email, Role role) {
@@ -46,6 +42,18 @@ public class User {
 
     public String getEmail() {
         return email;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public void setPasswordHash(int passwordHash) {
+        this.passwordHash = passwordHash;
     }
 
     public void setEmail(String email) {

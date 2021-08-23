@@ -2,6 +2,7 @@ package by.training.java_intro.s06_task.task1.main;
 
 import by.training.java_intro.s06_task.task1.bean.Book;
 import by.training.java_intro.s06_task.task1.bean.BookType;
+import by.training.java_intro.s06_task.task1.bean.User;
 import by.training.java_intro.s06_task.task1.controller.CommandProvider;
 import by.training.java_intro.s06_task.task1.controller.Controller;
 import by.training.java_intro.s06_task.task1.dao.BookDAO;
@@ -33,7 +34,11 @@ import java.util.List;
  */
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
-        Controller controller = new Controller();
-        controller.executeTask("ADD_BOOK PAPER Head_First Bert_Bates 2005");
+//        Controller controller = new Controller();
+//        controller.executeTask("ADD_BOOK PAPER Head_First Bert_Bates 2005");
+//        controller.executeTask("SIGN_UP root kali");
+
+        List<User> userList = new ArrayList<>();
+        System.out.println(userList);
     }
 }

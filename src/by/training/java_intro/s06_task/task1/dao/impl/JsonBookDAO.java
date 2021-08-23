@@ -37,7 +37,10 @@ public class JsonBookDAO implements BookDAO {
         if (id < bookList.size()) {
             throw new DAOException("Incorrect id");
         }
-        deleteBook(bookList.get((int) (id-1)));
+        if (!bookList.removeIf(book -> book.getId() == id)) {
+            throw new DAOException("The book has been not removed");
+        }
+        write();
     }
 
     @Override
@@ -45,16 +48,17 @@ public class JsonBookDAO implements BookDAO {
         if (book == null) {
             throw new DAOException("Incorrect book");
         }
-        if (bookList.remove(book)) {
+        if (!bookList.remove(book)) {
             throw new DAOException("The book has been not removed");
         }
         write();
     }
 
     private void parse() {
-        Gson gson = new Gson();
+        Gson gson = null;
         FileReader fileReader = null;
         try {
+            gson = new Gson();
             fileReader = new FileReader("src/by/training/java_intro/s06_task/task1/resources/books.json");
             bookList.addAll(List.of(gson.fromJson(fileReader, Book[].class)));
             fileReader.close();
@@ -64,9 +68,10 @@ public class JsonBookDAO implements BookDAO {
     }
 
     private void write() {
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Gson gson = null;
         PrintWriter printWriter = null;
         try {
+            gson = new GsonBuilder().setPrettyPrinting().create();
             printWriter = new PrintWriter("src/by/training/java_intro/s06_task/task1/resources/books.json");
             printWriter.write(gson.toJson(bookList));
             printWriter.close();

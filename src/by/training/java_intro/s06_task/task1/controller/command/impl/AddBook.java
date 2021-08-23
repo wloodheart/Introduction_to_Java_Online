@@ -7,8 +7,6 @@ import by.training.java_intro.s06_task.task1.service.BookService;
 import by.training.java_intro.s06_task.task1.service.exeption.ServiceException;
 import by.training.java_intro.s06_task.task1.service.factory.ServiceFactory;
 
-import java.util.Locale;
-
 public class AddBook implements Command {
     @Override
     public String execute(String request) {
