@@ -19,12 +19,10 @@ public class AddBook implements Command {
 
         String[] param = request.split(" ");
 
-        switch (param[1].toUpperCase()) {
-            case "PAPER" -> bookType = BookType.PAPER;
-            case "ELECTRONIC" -> bookType = BookType.ELECTRONIC;
-            default -> {
-                return "Incorrect book type";
-            }
+        try {
+            bookType = BookType.valueOf(param[1].toUpperCase());
+        } catch (IllegalArgumentException | NullPointerException e) {
+            return "Wrong book type";
         }
 
         title = param[2].replace('_', ' ');
@@ -39,6 +37,8 @@ public class AddBook implements Command {
         book.setTitle(title);
         book.setAuthor(author);
         book.setReleaseYear(releaseYear);
+
+        System.out.println(book);
 
         try {
             bookService.addNewBook(book);
