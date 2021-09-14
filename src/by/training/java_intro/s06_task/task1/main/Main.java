@@ -9,6 +9,7 @@ import by.training.java_intro.s06_task.task1.dao.BookDAO;
 import by.training.java_intro.s06_task.task1.dao.exeption.DAOException;
 import by.training.java_intro.s06_task.task1.dao.factory.DAOFactory;
 import by.training.java_intro.s06_task.task1.dao.impl.JsonBookDAO;
+import by.training.java_intro.s06_task.task1.dao.impl.JsonUserDAO;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -34,11 +35,8 @@ import java.util.List;
  */
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
-//        Controller controller = new Controller();
+        Controller controller = new Controller();
 //        controller.executeTask("ADD_BOOK PAPER Head_First Bert_Bates 2005");
-//        controller.executeTask("SIGN_UP root kali");
-
-        List<User> userList = new ArrayList<>();
-        System.out.println(userList);
+//        controller.executeTask("SIGN_IN root kali");
     }
 }

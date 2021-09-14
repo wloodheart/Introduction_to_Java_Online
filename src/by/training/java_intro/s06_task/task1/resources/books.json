@@ -1,26 +1,35 @@
-[
-  {
-    "id": 0,
-    "bookType": "PAPER",
-    "title": "Core Java",
-    "author": "Cay S. Horstmann",
-    "releaseYear": "2018",
-    "description": ""
-  },
-  {
-    "id": 1,
-    "bookType": "PAPER",
-    "title": "Effective Java",
-    "author": "Joshua Bloch",
-    "releaseYear": "2017",
-    "description": ""
-  },
-  {
-    "id": 2,
-    "bookType": "PAPER",
-    "title": "Java: A Beginner's Guide",
-    "author": "Herbert Schildt",
-    "releaseYear": "2018",
-    "description": ""
-  }
-]
+{
+  "bookList": [
+    {
+      "id": 0,
+      "bookType": "PAPER",
+      "title": "Core Java",
+      "author": "Cay S. Horstmann",
+      "releaseYear": "2018",
+      "description": ""
+    },
+    {
+      "id": 1,
+      "bookType": "PAPER",
+      "title": "Effective Java",
+      "author": "Joshua Bloch",
+      "releaseYear": "2017",
+      "description": ""
+    },
+    {
+      "id": 2,
+      "bookType": "PAPER",
+      "title": "Java: A Beginner\u0027s Guide",
+      "author": "Herbert Schildt",
+      "releaseYear": "2018",
+      "description": ""
+    },
+    {
+      "id": 3,
+      "bookType": "PAPER",
+      "title": "Head First",
+      "author": "Bert Bates",
+      "releaseYear": "2005"
+    }
+  ]
+}

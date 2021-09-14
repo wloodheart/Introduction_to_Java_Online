@@ -13,7 +13,6 @@ public class UserServiceImpl implements UserService {
         if (login == null || login.isEmpty()) {
             throw new ServiceException("Incorrect login");
         }
-
         try {
             DAOFactory daoFactory = DAOFactory.getInstance();
             UserDAO userDAO = daoFactory.getJsonUserDAOImpl();
@@ -25,11 +24,29 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void signUp(User user) throws ServiceException {
-
+        if(user == null){
+            throw new ServiceException("Incorrect user");
+        }
+        try {
+            DAOFactory daoFactory = DAOFactory.getInstance();
+            UserDAO userDAO = daoFactory.getJsonUserDAOImpl();
+            userDAO.signUp(user);
+        } catch (DAOException e) {
+            throw new ServiceException(e);
+        }
     }
 
     @Override
     public void signOut(String login) throws ServiceException {
-
+        if(login == null || login.isEmpty()){
+            throw new ServiceException("Incorrect login");
+        }
+        try {
+            DAOFactory daoFactory = DAOFactory.getInstance();
+            UserDAO userDAO = daoFactory.getJsonUserDAOImpl();
+            userDAO.signOut(login);
+        } catch (DAOException e) {
+            throw new ServiceException(e);
+        }
     }
 }

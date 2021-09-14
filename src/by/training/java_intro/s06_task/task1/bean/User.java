@@ -1,5 +1,7 @@
 package by.training.java_intro.s06_task.task1.bean;
 
+import com.google.gson.annotations.Expose;
+
 import java.util.Objects;
 
 public class User {
@@ -8,16 +10,19 @@ public class User {
     private int passwordHash;
     private String email;
     private Role role;
+    @Expose
+    private boolean authorised;
 
     public User() {
     }
 
-    public User(long id, String login, int passwordHash, String email, Role role) {
+    public User(long id, String login, int passwordHash, String email, Role role, boolean authorised) {
         this.id = id;
         this.login = login;
         this.passwordHash = passwordHash;
         this.email = email;
         this.role = role;
+        this.authorised = authorised;
     }
 
     public long getId() {
@@ -60,17 +65,25 @@ public class User {
         this.email = email;
     }
 
+    public boolean isAuthorised() {
+        return authorised;
+    }
+
+    public void setAuthorised(boolean authorised) {
+        this.authorised = authorised;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return id == user.id && passwordHash == user.passwordHash && Objects.equals(login, user.login) && Objects.equals(email, user.email) && role == user.role;
+        return id == user.id && passwordHash == user.passwordHash && authorised == user.authorised && Objects.equals(login, user.login) && Objects.equals(email, user.email) && role == user.role;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, login, passwordHash, email, role);
+        return Objects.hash(id, login, passwordHash, email, role, authorised);
     }
 
     @Override
@@ -81,6 +94,7 @@ public class User {
                 ", passwordHash=" + passwordHash +
                 ", email='" + email + '\'' +
                 ", role=" + role +
+                ", authorised=" + authorised +
                 '}';
     }
 }

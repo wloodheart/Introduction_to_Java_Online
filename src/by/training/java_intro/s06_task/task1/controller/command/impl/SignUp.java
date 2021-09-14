@@ -15,9 +15,9 @@ public class SignUp implements Command {
 
         String response = null;
 
-        char paramDelimiter = ' ';
-        login = request.substring(1, paramDelimiter);
-        password = request.substring(2, paramDelimiter);
+        String[] param = request.split(" ");
+        login = param[1];
+        password = param[2];
 
         user = new User();
         user.setLogin(login);
