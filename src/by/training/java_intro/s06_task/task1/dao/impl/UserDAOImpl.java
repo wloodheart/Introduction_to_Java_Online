@@ -3,20 +3,17 @@ package by.training.java_intro.s06_task.task1.dao.impl;
 import by.training.java_intro.s06_task.task1.bean.User;
 import by.training.java_intro.s06_task.task1.dao.UserDAO;
 import by.training.java_intro.s06_task.task1.dao.exeption.DAOException;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JsonUserDAO implements UserDAO {
-    private final List<User> userList = new ArrayList<>();
+public class UserDAOImpl implements UserDAO {
+    private List<User> userList;
+    private final String usersFilePath = "src/by/training/java_intro/s06_task/task1/resources/users";
 
-    public JsonUserDAO() {
-        parse();
+    public UserDAOImpl() {
+        read();
     }
 
     @Override
@@ -73,29 +70,34 @@ public class JsonUserDAO implements UserDAO {
         }
     }
 
-    private void parse() {
-        Gson gson = null;
-        FileReader fileReader = null;
+    private void read() {
+        FileInputStream fileInputStream;
+        ObjectInputStream objectInputStream;
+
         try {
-            gson = new Gson();
-            fileReader = new FileReader("src/by/training/java_intro/s06_task/task1/resources/users.json");
-            userList.addAll(List.of(gson.fromJson(fileReader, User[].class)));
-            fileReader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+            fileInputStream = new FileInputStream(usersFilePath);
+            objectInputStream = new ObjectInputStream(fileInputStream);
+            userList = (List<User>) objectInputStream.readObject();
+        } catch (FileNotFoundException e) {
+            File file = new File(usersFilePath);
+            userList = new ArrayList<>();
+        } catch (EOFException e) {
+            userList = new ArrayList<>();
+        } catch (IOException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
     }
 
-    private void write() {
-        Gson gson = null;
-        PrintWriter printWriter = null;
+    private void write() throws DAOException {
+        FileOutputStream fileOutputStream;
+        ObjectOutputStream objectOutputStream;
+
         try {
-            gson = new GsonBuilder().setPrettyPrinting().create();
-            printWriter = new PrintWriter("src/by/training/java_intro/s06_task/task1/resources/users.json");
-            printWriter.write(gson.toJson(userList));
-            printWriter.close();
+            fileOutputStream = new FileOutputStream(usersFilePath);
+            objectOutputStream = new ObjectOutputStream(fileOutputStream);
+            objectOutputStream.writeObject(userList);
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new DAOException(e);
         }
     }
 }

@@ -1,23 +1,8 @@
 package by.training.java_intro.s06_task.task1.main;
 
-import by.training.java_intro.s06_task.task1.bean.Book;
-import by.training.java_intro.s06_task.task1.bean.BookType;
-import by.training.java_intro.s06_task.task1.bean.User;
-import by.training.java_intro.s06_task.task1.controller.CommandProvider;
 import by.training.java_intro.s06_task.task1.controller.Controller;
-import by.training.java_intro.s06_task.task1.dao.BookDAO;
-import by.training.java_intro.s06_task.task1.dao.exeption.DAOException;
-import by.training.java_intro.s06_task.task1.dao.factory.DAOFactory;
-import by.training.java_intro.s06_task.task1.dao.impl.JsonBookDAO;
-import by.training.java_intro.s06_task.task1.dao.impl.JsonUserDAO;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 
 /*
 Задание 1: создать консольное приложение “Учет книг в домашней библиотеке”.
@@ -36,7 +21,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
         Controller controller = new Controller();
-//        controller.executeTask("ADD_BOOK PAPER Head_First Bert_Bates 2005");
-//        controller.executeTask("SIGN_IN root kali");
+        controller.executeTask("ADD_BOOK PAPER Head_First Bert_Bates 2005 qwe");
+//        controller.executeTask("SIGN_UP root kali");
     }
 }

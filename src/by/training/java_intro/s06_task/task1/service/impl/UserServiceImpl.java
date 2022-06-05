@@ -15,7 +15,7 @@ public class UserServiceImpl implements UserService {
         }
         try {
             DAOFactory daoFactory = DAOFactory.getInstance();
-            UserDAO userDAO = daoFactory.getJsonUserDAOImpl();
+            UserDAO userDAO = daoFactory.getUserDAOImpl();
             userDAO.signIn(login, password);
         } catch (DAOException e) {
             throw new ServiceException(e);
@@ -29,7 +29,7 @@ public class UserServiceImpl implements UserService {
         }
         try {
             DAOFactory daoFactory = DAOFactory.getInstance();
-            UserDAO userDAO = daoFactory.getJsonUserDAOImpl();
+            UserDAO userDAO = daoFactory.getUserDAOImpl();
             userDAO.signUp(user);
         } catch (DAOException e) {
             throw new ServiceException(e);
@@ -43,7 +43,7 @@ public class UserServiceImpl implements UserService {
         }
         try {
             DAOFactory daoFactory = DAOFactory.getInstance();
-            UserDAO userDAO = daoFactory.getJsonUserDAOImpl();
+            UserDAO userDAO = daoFactory.getUserDAOImpl();
             userDAO.signOut(login);
         } catch (DAOException e) {
             throw new ServiceException(e);

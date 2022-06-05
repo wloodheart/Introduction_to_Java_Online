@@ -1,16 +1,14 @@
 package by.training.java_intro.s06_task.task1.bean;
 
-import com.google.gson.annotations.Expose;
-
+import java.io.Serializable;
 import java.util.Objects;
 
-public class User {
+public class User implements Serializable {
     private long id;
     private String login;
     private int passwordHash;
     private String email;
     private Role role;
-    @Expose
     private boolean authorised;
 
     public User() {

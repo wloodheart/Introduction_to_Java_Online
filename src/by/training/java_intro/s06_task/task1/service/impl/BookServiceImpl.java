@@ -4,7 +4,6 @@ import by.training.java_intro.s06_task.task1.bean.Book;
 import by.training.java_intro.s06_task.task1.dao.BookDAO;
 import by.training.java_intro.s06_task.task1.dao.exeption.DAOException;
 import by.training.java_intro.s06_task.task1.dao.factory.DAOFactory;
-import by.training.java_intro.s06_task.task1.dao.impl.JsonBookDAO;
 import by.training.java_intro.s06_task.task1.service.BookService;
 import by.training.java_intro.s06_task.task1.service.exeption.ServiceException;
 
@@ -16,7 +15,7 @@ public class BookServiceImpl implements BookService {
         }
         try {
             DAOFactory daoFactory = DAOFactory.getInstance();
-            BookDAO bookDAO = daoFactory.getJsonBookDAOImpl();
+            BookDAO bookDAO = daoFactory.getBookDAOImp();
             bookDAO.addBook(book);
         } catch (DAOException e) {
             throw new ServiceException(e);
@@ -30,7 +29,7 @@ public class BookServiceImpl implements BookService {
         }
         try {
             DAOFactory daoFactory = DAOFactory.getInstance();
-            BookDAO bookDAO = daoFactory.getJsonBookDAOImpl();
+            BookDAO bookDAO = daoFactory.getBookDAOImp();
             bookDAO.deleteById(book.getId());
             bookDAO.addBook(book);
         } catch (DAOException e) {

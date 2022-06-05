@@ -1,8 +1,9 @@
 package by.training.java_intro.s06_task.task1.bean;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Book {
+public class Book implements Serializable {
     private long id;
     private BookType bookType;
     private String title;
@@ -10,8 +11,10 @@ public class Book {
     private String releaseYear;
     private String description;
 
-
-    public Book() { }
+    @java.io.Serial
+    private static final long serialVersionUID = 112315446L;
+    public Book() {
+    }
 
     public Book(long id, BookType bookType, String title, String author, String releaseYear, String description) {
         this.id = id;
